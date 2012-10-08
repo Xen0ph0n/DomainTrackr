@@ -1,7 +1,8 @@
 // DomainTrackr by Chris Xen0ph0n Clark <br>
 // chris@xenosec.org / xen0ph0n @ github.com <br>
 // Copyright and Licenced GPL v3 <br>
-// This is a stupid simple php DNS lookup tool for when robtexbans you *grin* <br>
+// This is a stupid simple php DNS lookup tool for when robtex bans you *grin* <br>
+// It does not store any information of any sort. <br>
 // Usage: <br>
 // Upload to your site of choice, free hosing provider etc. just needs PHP<br>
 // Use as an API to scrape/check lots of stuffs.. <br>
