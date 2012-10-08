@@ -73,7 +73,7 @@ echo $domain .'<br>';
         }
 
 
-if (isset($_GET['full']) && isset($_GET['ip'])){
+if (isset($_GET['full']) && $_GET['ip'] != null){
 $result = dns_get_record($ip.'.IN-ADDR.ARPA', DNS_ANY);
 
 echo '<br/><b>Full DNS Results:</b><br>';
