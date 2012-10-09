@@ -6,7 +6,7 @@
 // Usage: <br>
 // Upload to your site of choice, free hosing provider etc. just needs PHP<br>
 // Use as an API to scrape/check lots of stuffs.. <br>
-// www.domain.com/domaintrackr/?full=yes&domain=DOMAIN.NAME (full DNS results) <br>
+// domain.com/domaintrackr/?full=yes&domain=DOMAIN.NAME (full DNS results) <br>
 // " ""/?domain=DOMAIN.NAME (quick lookup of IPs it resolves too) <br>
 //  IP reverse lookup: (sucks , and will only give one random result if multiple domains hosted) <br>
 // " ""/?full=yes&ip=xxx.xxx.xxx.xxx (Full reverse results) <br>
