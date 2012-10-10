@@ -1,3 +1,7 @@
+
+NOTE: This will be a cool tool that does awesome ninja sh*t..right now it is a stop gap. :P <br><br>
+
+
 // DomainTrackr by Chris Xen0ph0n Clark <br>
 // chris@xenosec.org / xen0ph0n @ github.com <br>
 // Copyright and Licenced GPL v3 <br>
