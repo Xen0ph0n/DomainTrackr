@@ -1,4 +1,3 @@
-
 <html>
 <head>
 <title>DomainTrackr</title>
@@ -23,8 +22,8 @@ A:hover {text-decoration: underline}
 
 
 // dbconnection
-mysql_connect("db438830780.db.1and1.com", "dbo438830780", "infected") or die(mysql_error());
-mysql_select_db("db438830780") or die(mysql_error());
+mysql_connect("DBSERVER", "USERNAME", "PASSWORD") or die(mysql_error());
+mysql_select_db("DATABASE") or die(mysql_error());
 
 if (!isset($_POST['domain']) || (!isset($_POST['contact']))){
 echo '<b>DomainTrackr<br><br>Enter Domain To Track!<br><br></b>';
