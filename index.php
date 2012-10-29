@@ -42,6 +42,7 @@ echo 'Just need a quick IP/DNS Lookup?<a href="lookup.php"> Here you go</a>';
 if (isset($_POST['domain']) && (isset($_POST['contact']))){
 $domain = $_POST['domain'];
 $contact = $_POST['contact'];
+$multipcheck = gethostbynamel($domain);
 
 //check validity of email
 if(!filter_var($_POST['contact'], FILTER_VALIDATE_EMAIL)){
@@ -50,9 +51,8 @@ echo '<br><a href="index.php">Try Again</a>';
 }
 
 //check if domain has multiple dns records, like akamai hosted sites etc
-$multipcheck = gethostbynamel($domain);
 
-if(count($multipcheck) >= 2){
+elseif(count($multipcheck) >= 2){
 echo '<b>'. $domain.' </b>Uses Anycast DNS (such as Google.com) it is<b> 99.9% not Malcious </b><br><br>';
 echo 'Current Resolution of <b>'.$domain.'</b> is:<br><br>';
 	foreach($multipcheck as $ip){
