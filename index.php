@@ -42,8 +42,9 @@ echo 'Current Resolution of <b>'.$domain.'</b> is:<br>';
 echo '<b>'. $oldip. '</b><br><br>';
 echo 'Domain Added to Account:<br>';
 echo '<b>'. $contact. '</b><br><br>';
-echo '<b><a href="trackr.php?email='.$contact.'">Click Here To Track All Your Domains</a></b>';
+echo '<b><a href="trackr.php?email='.$contact.'">Track All Your Domains</a></b>';
 mysql_query("INSERT INTO domaintrackr (domain, newip, oldip, changedate, contact, notes) VALUES('$domain', '$newip', '$oldip', '$datetime' , '$contact', '$notes') ") or die(mysql_error());
+echo '<br><br><br><a href="index.php">Add More Domains!</a>';
 }
 }
 
