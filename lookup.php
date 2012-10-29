@@ -1,13 +1,23 @@
 
 <html>
-<head></head>
+<head>
 <title>DomainTrackr</title>
+<style type="text/css">
+<!--
+A:link {text-decoration: none}
+A:visited {text-decoration: none}
+A:active {text-decoration: none}
+A:hover {text-decoration: underline}
+-->
+</style>
+</head>
+
 <body>
 
 
 <?php
-// DomainTrackr by Chris Xen0ph0n Clark
-// chris@xenosec.org / xen0ph0n @ github.com
+// DomainTrackr by Chris Clark
+// chris@xenosec.org / #xenosec / xen0ph0n @ github.com
 // Copyright and Licenced GPL v3
 // Usage:
 // Upload to your site of choice, free hosing provider etc. 

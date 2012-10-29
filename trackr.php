@@ -1,17 +1,35 @@
+<?php header('Refresh: 1800'); ?>
 <html>
+<head>
 <title>DomainTrackr</title>
+<style type="text/css">
+<!--
+A:link {text-decoration: none}
+A:visited {text-decoration: none}
+A:active {text-decoration: none}
+A:hover {text-decoration: underline}
+-->
+</style>
+</head>
 <body>
 <?php
+
+// DomainTrackr by Chris Clark
+// chris@xenosec.org / #xenosec / xen0ph0n @ github.com
+// Copyright and Licenced GPL v3
+
 // dbconnection
 mysql_connect("db438830780.db.1and1.com", "dbo438830780", "infected") or die(mysql_error());
 mysql_select_db("db438830780") or die(mysql_error());
 
 // Enter your contact email to track your domains..requires open browser window refresh every 30mins
 if (!isset($_GET['email'])){
+echo "<b>DomainTrackr</b><br><br>";
 echo "Please Enter Your Email Address To Track Your Domains: "; 
 echo '<form name search method="get">';
 echo 'Email Address: <input type="text" maxlength="100" name="email">';
 echo '<input type="submit" value="Track"></form>';
+echo '<br><br><a href="index.php">Enter New Domains to Track</a>';
 }
 
 else {
@@ -34,7 +52,7 @@ echo '<a href="trackr.php">Or Enter Correct Email</a>';
 
 //Track Domains
 else{
-echo "<b> DomainTrackr by Xen0ph0n<br><br>Displaying All Domains for " . $contact . " <br></b><i><font size='2' color='darkblue'> Keep this page open in your browser, it will refresh every 30 minutes and email you any changes <br> (This Stops Me From Getting Launched From My WebHost!) </font><br><br></i>";
+echo "<b> DomainTrackr<br><br>Displaying All Domains for " . $contact . " <br></b><i><font size='2' color='darkblue'> Keep this page open in your browser, it will refresh every 30 minutes and email you any changes <br> (This Stops Me From Getting Launched From My WebHost!) </font><br><br></i><a href='index.php'>Track Additional Domains</a><br><br>";
 
 $allchangeddomains = array();
 while($row = mysql_fetch_array($domains)){

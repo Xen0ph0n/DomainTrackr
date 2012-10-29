@@ -1,25 +1,42 @@
 
 <html>
-<head></head>
+<head>
 <title>DomainTrackr</title>
+<style type="text/css">
+<!--
+A:link {text-decoration: none}
+A:visited {text-decoration: none}
+A:active {text-decoration: none}
+A:hover {text-decoration: underline}
+-->
+</style>
+</head>
+
 <body>
 
 
 <?php
+
+// DomainTrackr by Chris Clark
+// chris@xenosec.org / #xenosec / xen0ph0n @ github.com
+// Copyright and Licenced GPL v3
+
+
 // dbconnection
 mysql_connect("db438830780.db.1and1.com", "dbo438830780", "infected") or die(mysql_error());
 mysql_select_db("db438830780") or die(mysql_error());
 
 if (!isset($_POST['domain']) || (!isset($_POST['contact']))){
-echo '<b>DomainTrackr by Xen0ph0n<br><br>Enter Domain To Track!<br><br></b>';
+echo '<b>DomainTrackr<br><br>Enter Domain To Track!<br><br></b>';
 echo '<form name search method="post">';
 echo 'Domain: <input type="text" name="domain" maxlength="100"><br>';
 echo 'Notes on Domain: <input type="text" maxlength="250" name="notes"><br>';
 echo '<br><font size="2" color="red">Email Required For Tracking And Notification</font><br>';
 echo 'Email: <input type="text" name="contact" maxlength="100"><br>';
 echo '<input type="submit" value="Add to DB and Track"></form>';
-echo '<br><br><br>';
-echo 'Just need a quick IP/DNS Lookup?<a href="lookup.php"><b> Here you go</b></a>';
+echo '<br><br>';
+echo '<a href="trackr.php"> Track Your Existing Domains <br><br></a>';
+echo 'Just need a quick IP/DNS Lookup?<a href="lookup.php"> Here you go</a>';
 }
 
 if (isset($_POST['domain']) && (isset($_POST['contact']))){
