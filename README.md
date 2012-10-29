@@ -18,7 +18,7 @@ Then just put the relevant DB info in the //dbconnection sections at the top of 
 Also change the send from email address at the bottom of trackr to something relevant to your domain. <br>
 
 Version .01a<br>
-Next Features to be Added: Decent Webfront, Optional Email updates, pivotable ip's and domains to OSI tools, Ability to delete domains from your list, max 25 domains per user <br><br>
+Next Features to be Added: Decent Webfront, Optional Email updates, pivotable ip's and domains to OSI tools, max 25 domains per user <br><br>
 
 
 Usage:<br>
