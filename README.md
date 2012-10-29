@@ -17,6 +17,9 @@ contact  	varchar(100) 	utf8_bin 	 <br>
 Then just put the relevant DB info in the //dbconnection sections at the top of index & trackr <br>
 Also change the send from email address at the bottom of trackr to something relevant to your domain. <br>
 
+Version .01a<br>
+Next Features to be Added: Decent Webfront, Optional Email updates, pivotable ip's and domains to OSI tools, Ability to delete domains from your list, max 25 domains per user <br><br>
+
 
 Usage:<br>
 1. Enter Domain, Relevant Notes, and Email Address on the index page<br>
@@ -34,8 +37,7 @@ https://www.xenosec.org/trackr/trackr.php?email=chris@xenosec.org <-- Example wi
 <br>
 NOTE: Currently DomainTrackr does not support sites which resolve to multiple 
 IP Addresses. This functionality isn't needed in tracking malicious C2 domains
-and malicious infrastructure. I will include this in an update, or block entry 
-domains which resolve to multiple IPs (IE Google.com, Yahoo.com etc).<br><br><br>
+and malicious infrastructure. (IE Google.com, Yahoo.com etc).<br><br><br>
 
 
 Additionally included is a super lightweight PHP DNS and Reverse lookup page:<br><br>
@@ -60,3 +62,4 @@ Provided by DomainTrackr by Xen0ph0n
 <br>
 <br>
 <br>
+
