@@ -24,7 +24,8 @@ Next Features to be Added: Decent Webfront, Optional Email updates, pivotable ip
 Usage:<br>
 1. Enter Domain, Relevant Notes, and Email Address on the index page<br>
 2. Chose to either enter additional domains, or go to Trackr<br>
-3. Leave a browser window open to Trackr, it will refresh every 30 minutes<br>
+3. You can delete domains from here you no longer wish to track<br>
+4. Leave a browser window open to Trackr, it will refresh every 30 minutes<br>
 all domains ever entered by a user will be tracked (email address is account)<br>
 if any IP Resolution changes are detected an alert email will be sent to the<br>
 account email containing details. <br>
