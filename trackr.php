@@ -63,7 +63,7 @@ while($row = mysql_fetch_array($domains)){
 	}
 
 
-if(isset($allchangeddomains)){
+if($allchangeddomains != null){
 $arraystring = implode('', $allchangeddomains);
 $datetime = new DateTime();
 $subject = "Malicious Domain IP Resolution Change!!";
