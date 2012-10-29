@@ -49,7 +49,20 @@ echo "Not A Valid Email Address, you really need a real one.";
 echo '<br><a href="index.php">Try Again</a>';
 }
 
+//check if domain has multiple dns records, like akamai hosted sites etc
+$multipcheck = gethostbynamel($domain);
+
+if(count($multipcheck) >= 2){
+echo '<b>'. $domain.' </b>Uses Anycast DNS (such as Google.com) it is<b> 99.9% not Malcious </b><br><br>';
+echo 'Current Resolution of <b>'.$domain.'</b> is:<br><br>';
+	foreach($multipcheck as $ip){
+	echo $ip . '<br>';
+	}
+echo '<br><b>'. $domain .'</b> has<b> NOT </b> been added to your DomanTrackr Account<br><br><b><a href="index.php">Enter a New Domain</a></b><br></b>';
+
+}
 //do work if email checks out
+
 else{
 $oldip = gethostbyname($domain);
 $newip = $oldip;
