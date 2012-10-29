@@ -18,13 +18,13 @@ Then just put the relevant DB info in the //dbconnection sections at the top of 
 Also change the send from email address at the bottom of trackr to something relevant to your domain. <br>
 
 Version .01a<br>
-Next Features to be Added: Decent Webfront, Optional Email updates, pivotable ip's and domains to OSI tools, max 25 domains per user <br><br>
+Next Features to be Added: Pretty Webfront, Optional Email updates, pivotable ip's and domains to OSI tools <br><br>
 
 
 Usage:<br>
 1. Enter Domain, Relevant Notes, and Email Address on the index page<br>
 2. Chose to either enter additional domains, or go to Trackr<br>
-3. You can delete domains from here you no longer wish to track<br>
+3. You can delete domains from Trackr you no longer wish to track (30 Domains Per Account)<br>
 4. Leave a browser window open to Trackr, it will refresh every 30 minutes<br>
 all domains ever entered by a user will be tracked (email address is account)<br>
 if any IP Resolution changes are detected an alert email will be sent to the<br>
