@@ -6,97 +6,47 @@
 
 
 <?php
-// DomainTrackr by Chris Xen0ph0n Clark
-// chris@xenosec.org / xen0ph0n @ github.com
-// Copyright and Licenced GPL v3
-// Usage:
-// Upload to your site of choice, free hosing provider etc. 
-// Use as an API to scrape/check lots of stuffs..
-// www.domain.com/domaintrackr/?full=yes&domain=DOMAIN.NAME (full DNS results)
-// "                        ""/?domain=DOMAIN.NAME (quick lookup of IPs it resolves too)
-//
-// "                        ""/?full=yes&ip=xxx.xxx.xxx.xxx (Full reverse results)
-// "                        ""/?IP=xxx.xxx.xxx.xxx (quick lookup of DNS name)
+// dbconnection
+mysql_connect("db438830780.db.1and1.com", "dbo438830780", "infected") or die(mysql_error());
+mysql_select_db("db438830780") or die(mysql_error());
 
-
-
-echo '<b>Enter Your Search<br><br></b>';
-echo '<form name search method="get">';
-echo 'Full DNS Results (Slower):<input type="checkbox" value="yes" name="full" ><br>';
-echo '<br>Search for one or the other:<br>';
-echo 'Domain: <input type="text" name="domain"><br>';
-echo 'IP: <input type="text" name="ip"><br>';
-echo '<input type="submit" value="Lookup"></form>';
-
-
-
-if (isset($_GET['domain']) && $_GET['ip'] == null){
-$domain = $_GET['domain'];
-$quickresult = gethostbynamel($domain);
-
-echo '<b>Quick Results:</b><br><br>';
-foreach($quickresult as $ip){
-	echo $ip . '<br>';
-	}
-
-if (isset($_GET['full']) && isset($_GET['domain'])){
-$dnsresult = dns_get_record($domain, DNS_ALL);
-echo '<br><b>Full DNS Results:</b><br>';
-foreach($dnsresult as $key => $val){
-	if(is_array($val)){
-		 echo ' <br>';
-		foreach($dnsresult[$key] as $subkey => $subval){
-			if(is_array($subval)){
-				foreach($dnsresult[$key][$subkey] as $subsubkey => $subsubval){
-				echo $subsubkey . ' : ' . $subsubval.'<br>';
-				}
-				}
-			else{
-			echo $subkey. ' : '. $subval.'<br>';
-			}
-			}
-		}
-	else{
-	echo $key. ' : '. $val.'<br>';
-	}
+if (!isset($_POST['domain']) || (!isset($_POST['contact']))){
+echo '<b>DomainTrackr by Xen0ph0n<br><br>Enter Domain To Track!<br><br></b>';
+echo '<form name search method="post">';
+echo 'Domain: <input type="text" name="domain" maxlength="100"><br>';
+echo 'Notes on Domain: <input type="text" maxlength="250" name="notes"><br>';
+echo '<br><font size="2" color="red">Email Required For Tracking And Notification</font><br>';
+echo 'Email: <input type="text" name="contact" maxlength="100"><br>';
+echo '<input type="submit" value="Add to DB and Track"></form>';
+echo '<br><br><br>';
+echo 'Just need a quick IP/DNS Lookup?<a href="lookup.php"><b> Here you go</b></a>';
 }
+
+if (isset($_POST['domain']) && (isset($_POST['contact']))){
+$domain = $_POST['domain'];
+$contact = $_POST['contact'];
+
+//check validity of email
+if(!filter_var($_POST['contact'], FILTER_VALIDATE_EMAIL)){
+echo "Not A Valid Email Address, you really need a real one.";
+echo '<br><a href="index.php">Try Again</a>';
+}
+
+//do work if email checks out
+else{
+$oldip = gethostbyname($domain);
+$newip = $oldip;
+$notes = $_POST['notes'];
+$datetime = date('Y-m-d H:i:s');
+echo 'Current Resolution of <b>'.$domain.'</b> is:<br>';
+echo '<b>'. $oldip. '</b><br><br>';
+echo 'Domain Added to Account:<br>';
+echo '<b>'. $contact. '</b><br><br>';
+echo '<b><a href="trackr.php?email='.$contact.'">Click Here To Track All Your Domains</a></b>';
+mysql_query("INSERT INTO domaintrackr (domain, newip, oldip, changedate, contact, notes) VALUES('$domain', '$newip', '$oldip', '$datetime' , '$contact', '$notes') ") or die(mysql_error());
 }
 }
 
 
-elseif (isset($_GET['ip'])){
-$ip = $_GET['ip'];
-$domain = gethostbyaddr($ip);
-
-echo '<b>Quick Results:</b><br><br>';
-echo $domain .'<br>';
-        }
-
-
-if (isset($_GET['full']) && $_GET['ip'] != null){
-$result = dns_get_record($ip.'.IN-ADDR.ARPA', DNS_ANY);
-
-echo '<br/><b>Full DNS Results:</b><br>';
-
-foreach($result as $key => $val){
-	if(is_array($val)){
-		echo ' <br>';
-		foreach($result[$key] as $subkey => $subval){
-			if(is_array($subval)){
-				echo $subkey. ': <br>';
-				foreach($result[$key][$subkey] as $subsubkey => $subsubval){
-				echo $subsubkey . ' : ' . $subsubval.'<br>';
-				}
-				}
-			else{
-			echo $subkey. ' : '. $subval.'<br>';
-			}
-			}
-		}
-	else{
-	echo $key. ' : '. $val.'<br>';
-	}
-}
-}
-echo '<br><br>Portable DNS/ReverseResolution Check by Xen0ph0n.<br> <a href="http://www.github.com/Xen0ph0n/DomainTrackr"> View Source / Fork It </a>';
+echo '<br><br><br><br><font size="2">DomainTrackr by Xen0ph0n.<br> <a href="http://www.github.com/Xen0ph0n/DomainTrackr"> View Source / Fork It </a>';
 ?>
