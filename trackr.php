@@ -22,8 +22,20 @@ A:hover {text-decoration: underline}
 mysql_connect("db438830780.db.1and1.com", "dbo438830780", "infected") or die(mysql_error());
 mysql_select_db("db438830780") or die(mysql_error());
 
+
+//delete domains from tracking
+if (isset($_POST['delete'])){
+$deleteid = $_POST['delete'];
+echo "<b>DomainTrackr</b><br><br>";
+mysql_query("DELETE FROM domaintrackr WHERE ID='$deleteid'") or die(mysql_error());
+echo "<b>Domain Successfully Removed From DomainTrackr</b><br>";
+echo '<br><a href="'.$_SERVER['HTTP_REFERER'].'">Continue Tracking Your Domains</a></br>';
+echo '<br><br><a href="index.php">Enter New Domains to Track</a>';
+}
+
+
 // Enter your contact email to track your domains..requires open browser window refresh every 30mins
-if (!isset($_GET['email'])){
+elseif (!isset($_GET['email'])){
 echo "<b>DomainTrackr</b><br><br>";
 echo "Please Enter Your Email Address To Track Your Domains: "; 
 echo '<form name search method="get">';
@@ -31,6 +43,7 @@ echo 'Email Address: <input type="text" maxlength="100" name="email">';
 echo '<input type="submit" value="Track"></form>';
 echo '<br><br><a href="index.php">Enter New Domains to Track</a>';
 }
+
 
 else {
 $contact = $_GET['email'];
@@ -57,10 +70,7 @@ echo "<b> DomainTrackr<br><br>Displaying All Domains for " . $contact . " <br></
 $allchangeddomains = array();
 while($row = mysql_fetch_array($domains)){
 	echo "Domain:<b> ". $row['domain'] ."</b>";
-	//print notes for each domain
-	if(isset($row['notes'])){
-		echo "<font size='2'> <i>Notes: " . $row['notes']. "</font></i><br>";
-		}
+	echo "<font size='2'> <i>Notes: " . $row['notes']. "</font></i><br>";
 	$currentip = gethostbyname($row['domain']);
 	//get new resolutions and send email if ips are different
 	if($row['newip'] == $currentip){
@@ -76,8 +86,9 @@ while($row = mysql_fetch_array($domains)){
 		$allchangeddomains[$oid] = $changeddomain;
 		} 
 		
+	echo ' <form action="trackr.php" method="post"><button type="submit" name="delete" value="'. $row['ID'].'" >Stop Tracking '.$row['domain'].'</button> </form>';	
 		
-	echo "<br><br>";
+	
 	}
 
 
