@@ -71,7 +71,14 @@ echo '<br><b><a href="mailto:chris@xenosec.org">Tell Me Why You Need More!</a></
 //do work if email checks out
 
 else{
-$oldip = gethostbyname($domain);
+$resolution = gethostbyname($domain);
+if($resolution == $domain){
+  $oldip = "No DNS Record";
+  }
+else{
+  $oldip = $resolution;
+  }
+
 $newip = $oldip;
 $notes = $_POST['notes'];
 $datetime = date('Y-m-d H:i:s');

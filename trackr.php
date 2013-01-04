@@ -71,7 +71,14 @@ $allchangeddomains = array();
 while($row = mysql_fetch_array($domains)){
 	echo "Domain:<b> ". $row['domain'] ."</b>";
 	echo "<font size='2'> <i>Notes: " . $row['notes']. "</font></i><br>";
-	$currentip = gethostbyname($row['domain']);
+        $resolution = gethostbyname($row['domain']);
+        if($resolution == $row['domain']){
+        $currentip = "No DNS Record";
+        }
+        else{
+        $currentip = $resolution;
+        }
+
 	//get new resolutions and send email if ips are different
 	if($row['newip'] == $currentip){
 		echo " Current Resolution <b> ". $currentip. "</b> Last Change: <b>" . $row['changedate']. "</b>";
