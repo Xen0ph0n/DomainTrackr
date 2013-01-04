@@ -32,8 +32,8 @@ account email containing details. <br>
 <br><br>
 
 Live Example:<br>
-https://www.xenosec.org/trackr/index.php <-- Enter Domains<br>
-https://www.xenosec.org/trackr/trackr.php <-- Track Your Domains<br>
+http://www.dtrackr.com/ <-- Enter Domains<br>
+http://www.dtrackr.com/trackr.php <-- Track Your Domains<br>
 https://www.xenosec.org/trackr/trackr.php?email=chris@xenosec.org <-- Example with domains added (google to show deltas)<br>
 <br>
 NOTE: Currently DomainTrackr does not support sites which resolve to multiple 
@@ -42,10 +42,10 @@ and malicious infrastructure. (IE Google.com, Yahoo.com etc).<br><br><br>
 
 
 Additionally included is a super lightweight PHP DNS and Reverse lookup page:<br><br>
-https://www.xenosec.org/trackr/lookup.php <-- Full DNS Lookup Page<br>
+http://www.dtrackr.com/lookup.php <-- Full DNS Lookup Page<br>
 Upload to your site of choice, free hosing provider etc. just needs PHP<br>
 Use as an API to scrape/check lots of stuffs.. <br>
-domain.com/domaintrackr/lookup.php?full=yes&domain=DOMAIN.NAME (full DNS results) <br>
+lookup.php?full=yes&domain=DOMAIN.NAME (full DNS results) <br>
 " ""/?domain=DOMAIN.NAME (quick lookup of IPs it resolves too) <br>
 IP reverse lookup: (sucks , and will only give one random result if multiple domains hosted) <br>
 " ""/?full=yes&ip=xxx.xxx.xxx.xxx (Full reverse results) <br>
